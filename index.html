@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PC Games Popularity Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/vite.svg" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <div class="titles">
+          <p class="eyebrow">PC Games Dashboard</p>
+          <h1>What drives PC game popularity?</h1>
+          <p class="subtitle">
+            Explore how critic score, engagement, reviews, and sentiment relate to player interest.
+          </p>
+        </div>
+        <button id="reset-selection" type="button">Reset selection</button>
+      </header>
+
+      <section id="dashboard" class="dashboard">
+        <div class="panel panel-a">
+          <div class="panel-header">
+            <h2 class="panel-title">Critic Score vs Popularity</h2>
+          </div>
+          <div class="chart-surface" id="chart-a"></div>
+        </div>
+
+        <div class="panel panel-b">
+          <div class="panel-header">
+            <h2 class="panel-title">Engagement vs Popularity</h2>
+          </div>
+          <div class="chart-surface" id="chart-b"></div>
+        </div>
+
+        <div class="panel panel-c">
+          <div class="panel-header">
+            <h2 class="panel-title">Score Distribution</h2>
+          </div>
+          <div class="chart-surface" id="chart-c"></div>
+        </div>
+
+        <div class="panel panel-d">
+          <div class="panel-header">
+            <h2 class="panel-title">Positive Review Ratio Distribution</h2>
+          </div>
+          <div class="chart-surface" id="chart-d"></div>
+        </div>
+
+        <div class="panel panel-e">
+          <div class="panel-header">
+            <h2 class="panel-title">Positive Ratio vs Popularity</h2>
+          </div>
+          <div class="chart-surface" id="chart-e"></div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
