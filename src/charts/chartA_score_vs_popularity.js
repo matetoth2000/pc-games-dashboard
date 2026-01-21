@@ -125,7 +125,7 @@ function drawAxisLabels() {
     .append("text")
     .attr("class", "axis-label")
     .attr("x", dimensions.margin.left + innerWidth / 2)
-    .attr("y", dimensions.height - dimensions.margin.bottom / 2)
+    .attr("y", dimensions.margin.top + innerHeight + 36)
     .attr("text-anchor", "middle")
     .text("Metacritic Score");
 
@@ -250,15 +250,21 @@ export function render(containerSelector, state) {
 
   const data = validData(state.data);
 
-  const { width, height, margin } = dimensions;
-  innerWidth = width - margin.left - margin.right;
-  innerHeight = height - margin.top - margin.bottom;
+  const containerNode = container.node();
+  const bbox = containerNode?.getBoundingClientRect();
+  const effectiveWidth = bbox?.width && bbox.width > 0 ? bbox.width : dimensions.width;
+  const effectiveHeight = bbox?.height && bbox.height > 0 ? bbox.height : dimensions.height + 120;
+  const { margin } = dimensions;
+  innerWidth = effectiveWidth - margin.left - margin.right;
+  innerHeight = effectiveHeight - margin.top - margin.bottom;
 
   svg = container
     .append("svg")
     .attr("class", "chart-svg")
-    .attr("viewBox", `0 0 ${width} ${height}`)
-    .attr("preserveAspectRatio", "xMidYMid meet");
+    .attr("viewBox", `0 0 ${effectiveWidth} ${effectiveHeight}`)
+    .attr("preserveAspectRatio", "xMidYMid meet")
+    .attr("width", effectiveWidth)
+    .attr("height", effectiveHeight);
 
   plotArea = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
